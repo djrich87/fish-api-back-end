@@ -12,4 +12,5 @@ timestamps: true
 
 const Fish = mongoose.model('Fish', fishSchema)
 
+
 export {Fish}
