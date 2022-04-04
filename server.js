@@ -8,6 +8,8 @@ import './config/database.js'
 import cors from 'cors'
 // import routers
 
+import { router as profilesRouter } from './routes/profiles.js'
+import { router as authRouter } from './routes/auth.js'
 import { router as fishesRouter } from './routes/fishes.js'
 
 // set up app

@@ -1,7 +1,9 @@
 import { Fish } from '../models/fish.js'
 
+
 function index (req, res) {
   Fish.find({})
+  .populate('owner')
   .then(fishes => {
     res.json(fishes)
   })
@@ -11,8 +13,14 @@ function index (req, res) {
 }
 
 function create(req, res) {
+  req.body.owner = req.user.profile
   Fish.create(req.body)
-  .then(fish => res.json(fish))
+  .then(fish => {
+    fish.populate('owner')
+    .then(populatedFish => {
+      res.json(populatedFish)
+    })
+  })
   .catch(err => res.json(err))
 }
 
